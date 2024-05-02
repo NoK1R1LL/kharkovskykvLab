@@ -3,6 +3,9 @@ package tech.reliab.course.kharkovsky.bank.enity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class Bank {
@@ -15,6 +18,9 @@ public class Bank {
     private int bankRating;
     private double totalMoney;
     private double interestRate;
+    private List<User> users;
+    private List<BankAtm> atms;
+    private List<BankOffice> bankOffices;
 
     public Bank(String bankId, String name) {
         this.bankId = bankId;
@@ -26,6 +32,9 @@ public class Bank {
         this.bankRating = (int) (Math.random() * 100);
         this.totalMoney = Math.random() * 1_000_000;
         this.interestRate = generateInterestRate();
+        this.users = new ArrayList<>();
+        this.atms = new ArrayList<>();
+        this.bankOffices = new ArrayList<>();
     }
 
     private double generateInterestRate() {
@@ -33,5 +42,15 @@ public class Bank {
         double ratingScale = 100.0;
         double scaledRating = (double) bankRating / ratingScale;
         return maxInterestRate * (1 - scaledRating);
+    }
+
+    public void addAtm(BankAtm atm) {
+        atms.add(atm);
+        numberOfATMs++;
+    }
+
+    public void addBankOffice(BankOffice office) {
+        bankOffices.add(office);
+        numberOfOffices++;
     }
 }

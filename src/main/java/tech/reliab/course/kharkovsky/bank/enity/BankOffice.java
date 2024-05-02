@@ -3,6 +3,9 @@ package tech.reliab.course.kharkovsky.bank.enity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 public class BankOffice {
@@ -18,6 +21,7 @@ public class BankOffice {
     private double availableMoney;
     private double rentCost;
     private Bank bank;
+    private List<Employee> employees;
 
     public BankOffice(String officeId, String name, String address) {
         this.officeId = officeId;
@@ -30,6 +34,11 @@ public class BankOffice {
         this.cashDepositEnabled = true;
         this.availableMoney = 0;
         this.rentCost = Math.random() * 2000;
-        this.bank = bank;
+        this.employees = new ArrayList<>();
+    }
+
+    public void addEmployee(Employee employee) {
+        this.employees.add(employee);
+        this.numberOfATMs++;
     }
 }
