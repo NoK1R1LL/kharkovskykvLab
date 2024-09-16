@@ -9,24 +9,25 @@ import java.util.Date;
 @Setter
 public class Employee {
     private String employeeId;
-    private String fullName;
-    private Date dateOfBirth;
+    private String name;
+    private Date hireDate;
     private String position;
-    private BankOffice worksAtOffice; // Изменение типа переменной на BankOffice
-    private boolean isOfficeEmployee;
     private BankOffice office;
-    private boolean canIssueCredits;
+    private boolean canIssueCredits; // Поле для проверки права на выдачу кредитов
     private double salary;
 
-    public Employee(String employeeId, String fullName, Date dateOfBirth, String position, BankOffice worksAtOffice, boolean isOfficeEmployee, BankOffice office, boolean canIssueCredits, double salary) {
+    public Employee(String employeeId, String name, Date hireDate, String position, BankOffice office, boolean canIssueCredits, double salary) {
         this.employeeId = employeeId;
-        this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
+        this.name = name;
+        this.hireDate = hireDate;
         this.position = position;
-        this.worksAtOffice = worksAtOffice; // Изменение инициализации переменной
-        this.isOfficeEmployee = isOfficeEmployee;
         this.office = office;
         this.canIssueCredits = canIssueCredits;
         this.salary = salary;
+    }
+
+    // Метод для проверки, может ли сотрудник выдавать кредиты
+    public boolean isCreditIssuanceAllowed() {
+        return canIssueCredits;
     }
 }

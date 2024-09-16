@@ -10,7 +10,7 @@ public class BankAtm {
     private String name;
     private String address;
     private String status;
-    private Bank bank;
+    private BankOffice bankOffice;
     private String location;
     private Employee servicingEmployee;
     private boolean cashWithdrawalEnabled;
@@ -18,16 +18,16 @@ public class BankAtm {
     private double availableMoney;
     private double maintenanceCost;
 
-    public BankAtm(String atmId, String name, String address, Bank bank) {
+    public BankAtm(String atmId, String name, String address, BankOffice bankOffice) {
         this.atmId = atmId;
         this.name = name;
         this.address = address;
-        this.bank = bank;
+        this.bankOffice = bankOffice;
         this.status = getStatusDescription();
-        this.location = bank.getName() + " " + address;
+        this.location = bankOffice.getName() + " " + address;
         this.cashWithdrawalEnabled = true;
         this.cashDepositEnabled = true;
-        this.availableMoney = bank.getTotalMoney();
+        this.availableMoney = bankOffice.getAvailableMoney();
         this.maintenanceCost = Math.random() * 500;
     }
 
@@ -39,5 +39,9 @@ public class BankAtm {
         } else {
             return "Не работает";
         }
+    }
+
+    public Bank getBank() {
+        return bankOffice.getBank();
     }
 }

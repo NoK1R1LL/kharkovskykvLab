@@ -12,33 +12,24 @@ public class BankOffice {
     private String officeId;
     private String name;
     private String address;
-    private String status;
-    private boolean atmPlacementAllowed;
-    private int numberOfATMs;
-    private boolean creditIssuanceAllowed;
-    private boolean cashWithdrawalEnabled;
-    private boolean cashDepositEnabled;
-    private double availableMoney;
-    private double rentCost;
     private Bank bank;
-    private List<Employee> employees;
+    private double availableMoney;
+    private String status = "Работает";
+    private boolean creditIssuanceAllowed;
+    private List<BankAtm> bankAtms = new ArrayList<>();
 
-    public BankOffice(String officeId, String name, String address) {
+    public BankOffice(String officeId, String name, String address, Bank bank) {
         this.officeId = officeId;
         this.name = name;
         this.address = address;
-        this.status = "Работает";
-        this.atmPlacementAllowed = true;
-        this.creditIssuanceAllowed = true;
-        this.cashWithdrawalEnabled = true;
-        this.cashDepositEnabled = true;
-        this.availableMoney = 0;
-        this.rentCost = Math.random() * 2000;
-        this.employees = new ArrayList<>();
+        this.bank = bank;
     }
 
-    public void addEmployee(Employee employee) {
-        this.employees.add(employee);
-        this.numberOfATMs++;
+    public void addBankAtm(BankAtm atm) {
+        this.bankAtms.add(atm);
+    }
+
+    public List<BankAtm> getBankAtms() {
+        return bankAtms;
     }
 }
